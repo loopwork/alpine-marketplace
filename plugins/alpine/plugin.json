@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "alpine",
-  "version": "0.1.0-dev.10",
+  "version": "0.1.0-dev.12",
   "description": "Explore PPLI and investment-tax questions with Alpine's personalized, saved interview.",
   "author": {
     "name": "Loopwork",
@@ -87,7 +87,7 @@
         }
       },
       "publication": {
-        "release_notes": "Replaced the 32×32 composer icon with the existing 512×512 PNG so OpenAI branding validation accepts the package. This is a packaging fix, not host acceptance evidence."
+        "release_notes": "Rewrote the plugin README for directory listings: it now describes what Alpine does, setup, data handling and release status for users, and leaves reviewer instructions to the review test plan. No tool or server behavior changed."
       }
     }
   }

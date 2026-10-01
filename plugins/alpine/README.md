@@ -1,41 +1,43 @@
-# Alpine chat plugin — development candidate
+# Alpine
 
-One shared skill and remote MCP server for Claude Chat and ChatGPT Chat.
-Ask “Get started with Alpine” or “Could Alpine help reduce my investment taxes?”
-The getting-started skill also applies to interest in PPLI, life insurance, tax
-strategies, hedge funds, an exit, or capital gains. It calls `interview_user`
-with relevant context. Alpine's agent reviews your saved profile and chooses
-one question, rendered as choices, text, or a number with a unit.
-Each **Save & continue** calls `submit_interview_answer`, saves your answer to
-your encrypted Alpine profile, and asks Alpine what to do next. If another
-question is needed, the UI asks the chat assistant to call `interview_user`
-again. If the host cannot continue automatically, ask it to continue the Alpine
-interview. You can skip, pause, and resume. Answers are shared with your Alpine
-agent and connected chat host. Text-only hosts can ask the returned question
-and save your explicit answer. Old fixed-check tools remain for existing cards.
+Alpine helps you explore private placement life insurance (PPLI) and
+investment-tax questions through a short, personalized interview, and lets you
+continue your Alpine conversation from Claude or ChatGPT.
 
-This first check does not recommend a purchase or confirm eligibility. PPLI is
-life insurance with investments, not a tax-free rollover of existing gains.
-Actual benefits depend on costs, policy rules and professional review.
-The read-only `hello_world` demonstration and conversation tools remain
-available separately.
-Read your existing Alpine conversation, send a message to your Alpine assistant,
-and retrieve its reply. Authorize conversation access with your Alpine account.
+## What you can do
 
-Connect the package's MCP URL with OAuth in the chat host. Use synthetic names
-only for the hello-world demonstration. Hooks, local servers and delegated
-agents are not included.
+- **Get started.** Ask “Get started with Alpine” or “Could Alpine help reduce my
+  investment taxes?” The bundled getting-started skill also applies when you
+  mention PPLI, life insurance, tax strategies, hedge funds, a business exit, or
+  capital gains. It calls `interview_user` with the context you provide.
+- **Answer one question at a time.** Alpine's agent reviews your saved profile
+  and chooses each question, shown as choices, text, or a number with a unit.
+  **Save & continue** calls `submit_interview_answer`, saves your answer to your
+  encrypted Alpine profile, and asks Alpine what to do next. If another question
+  is needed, the card asks the chat assistant to call `interview_user` again. If
+  the host cannot continue automatically, ask it to continue the Alpine
+  interview. You can skip, pause, and resume. Text-only hosts ask the returned
+  question and save your explicit answer.
+- **Continue your Alpine conversation.** Read recent messages, send a message to
+  your Alpine assistant, and retrieve its reply.
+- **Check the connection.** The read-only `hello_world` demo returns a greeting
+  as text and an interactive card. Use a synthetic name.
 
-For a local debug loop, check the plugin name, connector identifier, version and
-endpoint in [TESTING.md](TESTING.md) before connecting. In Claude Chat, upload the
-ZIP through **Customize > Plugins > Add > Upload plugin**, then connect its server
-from that plugin's **Connectors** tab. Keep the same development identifier when
-uploading a rebuilt ZIP, and test in a fresh chat with that connection. Do not use
-the production Alpine connector or another preview as evidence for this build.
+The interview is educational. It does not recommend a purchase, give tax advice,
+or confirm eligibility. PPLI is life insurance with investments, not a tax-free
+rollover of gains already realized. Actual benefits depend on costs, policy
+rules, and review by licensed and tax professionals.
+
+## Setup
+
+Install the plugin, connect its Alpine server, and sign in with your Alpine
+account to authorize access to your conversation and planning profile. The
+plugin contains one skill and a remote MCP server configuration. It includes no
+hooks, local servers, commands, or delegated agents.
 
 ## Data handling and permissions
 
-The package runs no local commands and reads no local files. It connects to the
+The plugin runs no local commands and reads no local files. It connects to the
 HTTPS MCP URL in its configuration using your Alpine OAuth grant. The server
 returns tool results and interactive HTML cards; cards call the same tools through
 the host bridge and can request an assistant follow-up. Production uses
@@ -61,37 +63,17 @@ messaging suppression, provider retention and backup cleanup have separate rules
 The service records allowlisted analytics, not message or answer content.
 See [Privacy](https://alpine.am/privacy), [Terms](https://alpine.am/terms), and
 [Support](https://alpine.am/privacy#support) for details. Do not assume immediate
-erasure from all providers or submit sensitive records in this development release.
+erasure from all providers.
 
-## Testing and directory review
+## Release status
 
-This package is not submitted, approved, or ready for public directory review.
-Both packages include [five positive and three negative test cases](TESTING.md),
-generated from the same cases imported by OpenAI from the manifest. These are
-test instructions, not evidence of successful host runs. Run them separately in
-ChatGPT Chat and Claude Chat, including skill loading, interactive cards and text
-fallbacks. Compare the getting-started prompt with and without the plugin to
-verify that the installed skill invokes Alpine and uses its saved profile rather
-than substituting generic advice. Record the actual tools and results.
+This is a development release. It has not been approved for any public plugin
+directory. Use illustrative information rather than sensitive medical or
+financial records. [TESTING.md](TESTING.md) lists five positive and three
+negative review cases; they are test instructions, not evidence of successful
+runs in Claude or ChatGPT.
 
-Before OpenAI review, verify the public listing URLs and dedicated synthetic
-reviewer account, run all eight cases, and provide a reviewer-accessible video
-walkthrough. Account access details and credentials belong only in the secure
-review form, never in this package. The account must work without MFA approval,
-one-time codes, magic links, or private-network access; do not weaken normal
-account authentication. The recording URL is deliberately absent until a real
-walkthrough exists. No country restrictions or translations are declared here;
-check the dashboard's saved settings before submission.
-
-For Anthropic, submit the GitHub distribution's `plugins/alpine` folder as a
-plugin bundle and the remote MCP server separately as a connector. Run portal
-validation on the exact commit, fix blocking findings, and revalidate after any
-push. A local manifest check is not portal validation, security review, or Chat
-acceptance. Complete the data-handling questions and required acknowledgements
-in the portal; the README does not make those attestations for the publisher.
-
-Never submit an orb preview URL to a public directory. The server implementation
-and private company repository are not part of this distribution package.
+## License
 
 The [Alpine Plugin License](LICENSE) permits installation and use of this
 unmodified package with Alpine. It is proprietary, not open source, and does not

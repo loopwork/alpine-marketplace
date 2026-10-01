@@ -2,7 +2,7 @@
 
 Plugin: Alpine
 Plugin and connector identifier: alpine
-Version: 0.1.0-dev.10
+Version: 0.1.0-dev.12
 MCP endpoint: https://alpine.am/mcp
 
 Before testing, match this name, identifier, version and endpoint to the installed
@@ -13,7 +13,7 @@ These are test instructions, not evidence of successful host runs.
 Run separately in ChatGPT Chat and Claude Chat with a dedicated synthetic account
 and the packaged skill installed. Connecting only the MCP endpoint does not prove
 skill loading. Use the private review form for account access details, never this
-file. See [README](README.md) for data handling and submission requirements.
+file. See [README](README.md) for data handling and permissions.
 
 Run the positive cases in order, then the negative cases. The interview must have
 an unanswered question for the skip case; record a blocked result if it has
