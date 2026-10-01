@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "alpine",
-  "version": "0.1.0-dev.6",
-  "description": "Explore whether PPLI is worth investigating with Alpine's saved investment-tax fit check.",
+  "version": "0.1.0-dev.8",
+  "description": "Explore PPLI and investment-tax questions with Alpine's personalized, saved interview.",
   "author": {
     "name": "Loopwork",
     "url": "https://alpine.am"
@@ -13,7 +13,7 @@
       "interface": {
         "displayName": "Alpine",
         "shortDescription": "Continue your Alpine chat",
-        "longDescription": "Explore whether private placement life insurance (PPLI) is worth investigating with Alpine's eight-question educational fit check. Save answers to your encrypted Alpine profile, pause, resume, and edit them from a connected chat host. Answers are shared with your Alpine assistant and the connected host. The check does not recommend a purchase or establish eligibility; PPLI is life insurance with investments, not a tax-free rollover of existing gains.\n\nYou can also read recent Alpine messages, summarize planning discussions, send questions about insurance and savings goals, and retrieve your assistant's reply. Messages stay in the same Alpine conversation so you can pick up where you left off.\n\nSign in to Alpine and authorize access to your conversation and planning profile. Messages and saved answers are processed by Alpine. The service supports educational exploration and preparation for discussions with qualified professionals. It does not issue insurance policies, execute trades, or process payments. Use illustrative information rather than sensitive medical or financial records during this development release.\n\nAn optional hello-world demo displays a greeting to test the connection and interactive card. The demo does not read or change your workspace.",
+        "longDescription": "Explore whether private placement life insurance (PPLI) is worth investigating with Alpine's personalized educational interview. Start with an interest in insurance, tax strategies, hedge funds, an exit, or capital gains. Alpine's agent reviews your saved profile and chooses each interactive question. Answers are saved to your encrypted Alpine profile before Alpine prepares the next step. The card can ask your chat assistant to continue; where that is unavailable, ask it to continue the Alpine interview. You can skip, pause and resume. Answers are shared with your Alpine assistant and the connected host. This does not recommend a purchase or establish eligibility; PPLI is life insurance with investments, not a tax-free rollover of existing gains.\n\nYou can also read recent Alpine messages, summarize planning discussions, send questions about insurance and savings goals, and retrieve your assistant's reply. Messages stay in the same Alpine conversation so you can pick up where you left off.\n\nSign in to Alpine and authorize access to your conversation and planning profile. Messages and saved answers are processed by Alpine. The service supports educational exploration and preparation for discussions with qualified professionals. It does not issue insurance policies, execute trades, or process payments. Use illustrative information rather than sensitive medical or financial records during this development release.\n\nAn optional hello-world demo displays a greeting to test the connection and interactive card. The demo does not read or change your workspace.",
         "developerName": "Loopwork",
         "category": "Finance",
         "websiteURL": "https://alpine.am",
@@ -38,10 +38,10 @@
               "expected_behavior": "Request limit 2 and show the two most recent visible messages in chronological order. Do not invent messages or send a new message. The reviewer account must contain at least three synthetic messages."
             },
             {
-              "description": "Open the saved educational PPLI fit check without changing answers.",
-              "prompt": "Get started with Alpine's PPLI fit check. Show my saved progress without saving any new answers.",
-              "tools_triggered": "get_started",
-              "expected_behavior": "Show the saved profile and next unanswered question, in an interactive card where supported or text otherwise. Do not invent or save answers, recommend a purchase, or claim eligibility."
+              "description": "Start the Alpine-led interview from a user's stated interest.",
+              "prompt": "I recently exited a business and want to explore tax strategies with Alpine. This is a fictional reviewer scenario.",
+              "tools_triggered": "interview_user",
+              "expected_behavior": "Load the getting-started skill and call interview_user with the stated context. Display Alpine's generated question, in an interactive card where supported or text otherwise. Wait for an answer; do not loop, invent facts, recommend a purchase, or claim eligibility."
             },
             {
               "description": "Send one explicitly requested synthetic message and retrieve the assistant's reply.",
@@ -50,10 +50,10 @@
               "expected_behavior": "Send the requested content once with a unique message ID. Poll read_messages using the returned ID to retrieve the reply. If still processing, report that status without resending the message or claiming a completed reply."
             },
             {
-              "description": "Save one explicit synthetic PPLI answer and confirm it persists.",
-              "prompt": "For this fictional reviewer profile, save my tax residency answer as United States only. Then reopen Alpine's fit check to confirm the saved answer.",
-              "tools_triggered": "get_started, save_ppli_answer",
-              "expected_behavior": "Read the current revision, save only residency=us with that expectedRevision, and reopen get_started to confirm the persisted value. Handle a stale revision by reloading instead of overwriting unseen changes. Do not infer other answers or claim an eligibility decision."
+              "description": "Save an explicit skip and continue the adaptive interview.",
+              "prompt": "For this fictional reviewer profile, show the current Alpine interview question, skip it, and continue to the next step.",
+              "tools_triggered": "interview_user, submit_interview_answer",
+              "expected_behavior": "Read the current question and revision, then save only the explicitly requested skip (answer null). In the card, verify Save or Skip persists before requesting host continuation. If Alpine prepares another question, call interview_user again. Stop on completion or planning failure. Reload conflicts instead of overwriting unseen answers. Reopen to confirm persistence."
             },
             {
               "description": "Run the read-only hello-world demo with a synthetic name.",
@@ -82,7 +82,7 @@
         }
       },
       "publication": {
-        "release_notes": "Clarified the conversation workflow, shortened the subtitle, added support and terms links, and supplied five positive and three negative review scenarios. Added a dedicated synthetic reviewer sign-in with OAuth consent and connection revocation. Terms take effect October 1, 2026. Production verification and an executed host walkthrough remain required before submission."
+        "release_notes": "Consolidated Claude and OpenAI marketplace distribution into one shared plugin tree and removed the duplicate Claude icon path. Production verification and an executed host walkthrough remain required before directory submission."
       }
     }
   }

@@ -2,11 +2,17 @@
 
 One shared skill and remote MCP server for Claude Chat and ChatGPT Chat.
 Ask “Get started with Alpine” or “Could Alpine help reduce my investment taxes?”
-The `get_started` tool opens a resumable eight-question educational check for
-private placement life insurance (PPLI). Each **Save & continue** calls
-`save_ppli_answer` and updates your encrypted Alpine profile. Answers are shared
-with your Alpine agent and connected chat host. You can pause, resume and edit.
-Text-only hosts can ask the same questions and save your explicit answers.
+The getting-started skill also applies to interest in PPLI, life insurance, tax
+strategies, hedge funds, an exit, or capital gains. It calls `interview_user`
+with relevant context. Alpine's agent reviews your saved profile and chooses
+one question, rendered as choices, text, or a number with a unit.
+Each **Save & continue** calls `submit_interview_answer`, saves your answer to
+your encrypted Alpine profile, and asks Alpine what to do next. If another
+question is needed, the UI asks the chat assistant to call `interview_user`
+again. If the host cannot continue automatically, ask it to continue the Alpine
+interview. You can skip, pause, and resume. Answers are shared with your Alpine
+agent and connected chat host. Text-only hosts can ask the returned question
+and save your explicit answer. Old fixed-check tools remain for existing cards.
 
 This first check does not recommend a purchase or confirm eligibility. PPLI is
 life insurance with investments, not a tax-free rollover of existing gains.

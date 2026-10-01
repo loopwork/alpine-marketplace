@@ -8,7 +8,7 @@
   "plugins": [
     {
       "name": "alpine",
-      "description": "Explore whether PPLI is worth investigating with Alpine's saved investment-tax fit check.",
+      "description": "Explore PPLI and investment-tax questions with Alpine's personalized, saved interview.",
       "source": "./plugins/alpine"
     }
   ]

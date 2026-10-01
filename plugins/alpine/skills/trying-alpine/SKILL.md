@@ -1,35 +1,49 @@
 ---
 name: trying-alpine
-description: Starts or resumes Alpine's investment-tax fit check and saves each answer. Use when a user wants to get started with Alpine, save taxes on investments, reinvest liquid assets, or explore whether PPLI might help. No prior insurance knowledge is needed.
+description: Starts or resumes Alpine's personalized getting-started interview. Use when the user expresses interest in Alpine, PPLI, life insurance, tax strategies, investing in a hedge fund, reinvesting liquid assets, a business exit, or capital gains they just paid. No prior insurance knowledge is needed.
 ---
 
 # Get started with Alpine
 
-1. Call the connected Alpine MCP server's `get_started` tool. It reads saved
-   progress and opens an interactive first check. Do not assume the user knows
-   private placement life insurance (PPLI). Explain that it combines life
-   insurance with investments and may be worth investigating for some people.
-2. Let the user answer in the card. Each **Save & continue** updates their
-   encrypted Alpine profile. Answers are available to their Alpine agent and
-   connected chat host. Opening the tool alone does not save anything.
-3. Without interactive UI, explain the saving/sharing notice in the tool result,
-   then ask its next question with the returned choices. Save each explicit
-   answer using `save_ppli_answer` with `questionId`, the chosen `value`, and
-   the latest `expectedRevision`. Never guess financial facts or silently fill
-   answers from other conversations. Accept “not sure” or a refusal to disclose.
-4. Only say an answer is saved after a successful tool result. On failure or
-   conflict, call `get_started` to read the authoritative saved state; let the
-   user confirm before replacing a different answer. Do not automatically
-   advance the revision and overwrite it. Resume rather than restart.
-5. Use the returned assessment and its reasons. This is an educational first
-   check, not a recommendation, a quote, tax advice, underwriting, or a finding
-   of accredited-investor or qualified-purchaser eligibility. Explain that a
-   licensed insurance professional and tax adviser must review a specific
-   product, all-in costs, access needs and qualifications. Users can change
-   answers by calling the same save tool with a current revision.
+1. Call the connected Alpine MCP server's `interview_user`. Include relevant
+   user-provided context in its optional `context` argument, such as “The user
+   says they recently sold a business and wants to explore tax strategies.”
+   Do not infer financial facts. Alpine's agent reviews the saved profile and
+   chooses one question with an interactive UI. Do not choose your own fixed
+   questionnaire or require the user to know private placement life insurance.
+2. Wait for the user to answer the card. **Save & continue** saves the answer to
+   their encrypted Alpine profile, then asks Alpine's agent what to do next.
+   Answers are shared with Alpine and the connected chat host. Opening the
+   interview also saves its context and prepared question, but not an answer.
+3. When the UI sends a user message saying an answer was saved and asking you to
+   continue, call `interview_user` again without changing context. It displays
+   the prepared next question. Repeat this cycle after each user response.
+   Never loop tool calls while awaiting an answer or fabricate a response.
+   If the host cannot start a new turn automatically, continue when the user
+   asks. A message request alone does not prove a new assistant turn ran.
+4. Without interactive UI, explain the saving/sharing notice, ask the returned
+   question with its choices or unit, and wait. Save only the explicit response
+   with `submit_interview_answer`, using the returned `questionId` and latest
+   `expectedRevision`. Use exact option text, free text, or a number as requested;
+   `null` records an explicit skip. Then call `interview_user` to show the next
+   question if the result is not complete or pending. Never infer answers from
+   context. Respect skips and requests to stop.
+5. Only confirm saving after a successful tool result. On an uncertain request
+   or conflict, reload with `interview_user`; never overwrite a different answer.
+   A `pending` result means saved answers are safe but planning failed. Explain
+   the status and ask before retrying; do not enter an automatic retry loop.
+6. Stop when Alpine returns `complete` and share its educational next steps.
+   Repeated calls resume saved progress. A different explicit `context` after
+   completion can start another interview while preserving past answers.
+   This is not a recommendation, quote, tax advice, underwriting, or a finding
+   of accredited-investor or qualified-purchaser eligibility. Specific products,
+   costs, access needs and qualifications require licensed and tax-professional
+   review. The legacy `get_started` / `save_ppli_answer` tools exist only for old
+   fixed-question cards; do not use them for this flow.
 
 Never promise tax savings, a tax-free rollover, or unrestricted withdrawals.
-Selling appreciated assets can still trigger capital-gains tax. Insurance and
+PPLI cannot erase capital-gains tax already paid. Selling appreciated assets can
+still trigger capital-gains tax. Insurance and
 investment costs can outweigh benefits, and loans, withdrawals, policy lapse
 and modified endowment contract rules can create tax liabilities. Do not collect
 account numbers, tax documents or medical details in this first check. Do not
