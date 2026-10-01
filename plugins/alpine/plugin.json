@@ -17,9 +17,7 @@
         "displayName": "Alpine",
         "shortDescription": "Continue your Alpine chat",
         "longDescription": "Explore whether private placement life insurance (PPLI) is worth investigating with Alpine's personalized educational interview. Start with an interest in insurance, tax strategies, hedge funds, an exit, or capital gains. Alpine's agent reviews your saved profile and chooses each interactive question. Answers are saved to your encrypted Alpine profile before Alpine prepares the next step. The card can ask your chat assistant to continue; where that is unavailable, ask it to continue the Alpine interview. You can skip, pause and resume. Answers are shared with your Alpine assistant and the connected host. This does not recommend a purchase or establish eligibility; PPLI is life insurance with investments, not a tax-free rollover of existing gains.\n\nYou can also read recent Alpine messages, summarize planning discussions, send questions about insurance and savings goals, and retrieve your assistant's reply. Messages stay in the same Alpine conversation so you can pick up where you left off.\n\nSign in to Alpine and authorize access to your conversation and planning profile. Messages and saved answers are processed by Alpine. The service supports educational exploration and preparation for discussions with qualified professionals. It does not issue insurance policies, execute trades, or process payments. Use illustrative information rather than sensitive medical or financial records during this development release.\n\nAn optional hello-world demo displays a greeting to test the connection and interactive card. The demo does not read or change your workspace.",
-        "developerName": "Loopwork",
         "category": "Finance",
-        "websiteURL": "https://alpine.am",
         "supportURL": "https://alpine.am/privacy#support",
         "privacyPolicyURL": "https://alpine.am/privacy",
         "termsOfServiceURL": "https://alpine.am/terms",
@@ -29,7 +27,9 @@
           "Show my latest two Alpine messages.",
           "Summarize my recent Alpine conversation.",
           "Send Alpine this message: Help me organize my planning questions."
-        ]
+        ],
+        "developerName": "Loopwork",
+        "websiteURL": "https://alpine.am"
       },
       "review": {
         "commerce": false,

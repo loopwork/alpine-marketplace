@@ -5,7 +5,7 @@
     "email": "support@loopwork.com",
     "url": "https://alpine.am"
   },
-  "description": "Alpine plugins for chat.",
+  "description": "Explore PPLI and investment-tax questions with Alpine's personalized, saved interview.",
   "plugins": [
     {
       "name": "alpine",

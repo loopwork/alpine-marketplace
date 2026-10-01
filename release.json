@@ -3,10 +3,10 @@
   "endpoint": "https://alpine.am/mcp",
   "archives": {
     "openai": {
-      "sha256": "e4e5655856f63b7db3a9c633e8ad6189aaa4ea1d9e4b1e83498a25d6035b0eb7"
+      "sha256": "42b95aa195892402712e5508c9cd4aac597363bab4ed98f474a78caeda330f85"
     },
     "claude": {
-      "sha256": "3a0ee27148e6e68f544f86d43236dd1e98bdba85f189a2ff9e631bce543f8eed"
+      "sha256": "1876e238ed02fb2c22a07c0c7040ded3e4dcb0092b72d8d9d52e73c174dcb6bb"
     }
   }
 }

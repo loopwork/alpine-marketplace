@@ -26,6 +26,13 @@ Connect the package's MCP URL with OAuth in the chat host. Use synthetic names
 only for the hello-world demonstration. Hooks, local servers and delegated
 agents are not included.
 
+For a local debug loop, check the plugin name, connector identifier, version and
+endpoint in [TESTING.md](TESTING.md) before connecting. In Claude Chat, upload the
+ZIP through **Customize > Plugins > Add > Upload plugin**, then connect its server
+from that plugin's **Connectors** tab. Keep the same development identifier when
+uploading a rebuilt ZIP, and test in a fresh chat with that connection. Do not use
+the production Alpine connector or another preview as evidence for this build.
+
 ## Data handling and permissions
 
 The package runs no local commands and reads no local files. It connects to the

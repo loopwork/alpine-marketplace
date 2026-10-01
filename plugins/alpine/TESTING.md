@@ -1,7 +1,13 @@
 # Alpine review test plan
 
+Plugin: Alpine
+Plugin and connector identifier: alpine
 Version: 0.1.0-dev.10
 MCP endpoint: https://alpine.am/mcp
+
+Before testing, match this name, identifier, version and endpoint to the installed
+plugin and its connected MCP server. Start a fresh chat using this connection;
+do not substitute a production or another development connection with similar tools.
 
 These are test instructions, not evidence of successful host runs.
 Run separately in ChatGPT Chat and Claude Chat with a dedicated synthetic account
