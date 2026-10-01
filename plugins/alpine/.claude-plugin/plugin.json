@@ -1,12 +1,15 @@
 {
   "name": "alpine",
-  "version": "0.1.0-dev.8",
+  "displayName": "Alpine",
+  "version": "0.1.0-dev.9",
   "description": "Explore PPLI and investment-tax questions with Alpine's personalized, saved interview.",
   "author": {
     "name": "Loopwork",
+    "email": "support@loopwork.com",
     "url": "https://alpine.am"
   },
   "homepage": "https://alpine.am",
+  "repository": "https://github.com/loopwork/alpine-marketplace",
   "privacyPolicyUrl": "https://alpine.am/privacy",
   "icon": "./assets/logo.png",
   "skills": "./skills/",

@@ -1,6 +1,6 @@
 # Alpine plugins
 
-Generated distribution for Alpine's chat plugin, version 0.1.0-dev.8.
+Generated distribution for Alpine's chat plugin, version 0.1.0-dev.9.
 Packages use https://alpine.am/mcp and the shared skill. The MCP server also supplies
 the shared interactive UI. No hooks, local servers or shell workflows are bundled.
 Public marketplace availability is not provider directory approval.

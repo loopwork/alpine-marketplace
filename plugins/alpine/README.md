@@ -26,18 +26,62 @@ Connect the package's MCP URL with OAuth in the chat host. Use synthetic names
 only for the hello-world demonstration. Hooks, local servers and delegated
 agents are not included.
 
-This package is not submitted, approved, or ready for public directory review.
-The OpenAI manifest includes five positive and three negative review scenarios;
-these are test instructions, not evidence of successful host runs. Before review,
-verify the public terms and dedicated synthetic reviewer login, complete host
-tests, and provide an accessible walkthrough recording. Enter reviewer credentials
-only in the secure dashboard, never in this package. The reviewer login must work without MFA,
-one-time codes, or magic links; do not weaken normal account authentication.
+## Data handling and permissions
 
-Once activated for review, use `https://alpine.am/review` and the access key
-provided privately in the review dashboard. Complete OAuth consent in your chat
-host. The workspace contains fictional planning notes and six example messages;
-do not enter personal data. Return to the review page to revoke a connection.
+The package runs no local commands and reads no local files. It connects to the
+HTTPS MCP URL in its configuration using your Alpine OAuth grant. The server
+returns tool results and interactive HTML cards; cards call the same tools through
+the host bridge and can request an assistant follow-up. Production uses
+https://alpine.am/mcp; development packages identify their isolated endpoint in
+[the review test plan](TESTING.md).
+
+- `read_messages` returns your Alpine conversation to the connected chat host.
+- `send_message` saves your requested message in that conversation and starts
+  Alpine's agent. The agent may change workspace data or use connected services
+  through its tools and safeguards. Only delegate actions you intend to authorize.
+- `interview_user` saves your supplied context and prepared question.
+  `submit_interview_answer` saves an explicit answer or skip to your encrypted
+  profile. Alpine sends relevant context to the account's selected model provider
+  to prepare the next question. Interview planning cannot take external actions.
+- Legacy `get_started` and `save_ppli_answer` read and save fixed-check answers
+  for older cards. `hello_world` only returns a synthetic greeting.
+
+Messages and profile answers are retained in your Alpine workspace and shared
+with your Alpine assistant and connected host. Revoking OAuth stops access but does not delete
+saved content or copies already received by the host. Account deletion removes
+live workspace content unless a legal hold applies; security audit records,
+messaging suppression, provider retention and backup cleanup have separate rules.
+The service records allowlisted analytics, not message or answer content.
+See [Privacy](https://alpine.am/privacy), [Terms](https://alpine.am/terms), and
+[Support](https://alpine.am/privacy#support) for details. Do not assume immediate
+erasure from all providers or submit sensitive records in this development release.
+
+## Testing and directory review
+
+This package is not submitted, approved, or ready for public directory review.
+Both packages include [five positive and three negative test cases](TESTING.md),
+generated from the same cases imported by OpenAI from the manifest. These are
+test instructions, not evidence of successful host runs. Run them separately in
+ChatGPT Chat and Claude Chat, including skill loading, interactive cards and text
+fallbacks. Compare the getting-started prompt with and without the plugin to
+verify that the installed skill invokes Alpine and uses its saved profile rather
+than substituting generic advice. Record the actual tools and results.
+
+Before OpenAI review, verify the public listing URLs and dedicated synthetic
+reviewer account, run all eight cases, and provide a reviewer-accessible video
+walkthrough. Account access details and credentials belong only in the secure
+review form, never in this package. The account must work without MFA approval,
+one-time codes, magic links, or private-network access; do not weaken normal
+account authentication. The recording URL is deliberately absent until a real
+walkthrough exists. No country restrictions or translations are declared here;
+check the dashboard's saved settings before submission.
+
+For Anthropic, submit the GitHub distribution's `plugins/alpine` folder as a
+plugin bundle and the remote MCP server separately as a connector. Run portal
+validation on the exact commit, fix blocking findings, and revalidate after any
+push. A local manifest check is not portal validation, security review, or Chat
+acceptance. Complete the data-handling questions and required acknowledgements
+in the portal; the README does not make those attestations for the publisher.
 
 Never submit an orb preview URL to a public directory. The server implementation
 and private company repository are not part of this distribution package.

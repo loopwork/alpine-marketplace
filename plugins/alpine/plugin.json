@@ -1,15 +1,18 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "alpine",
-  "version": "0.1.0-dev.8",
+  "version": "0.1.0-dev.9",
   "description": "Explore PPLI and investment-tax questions with Alpine's personalized, saved interview.",
   "author": {
     "name": "Loopwork",
+    "email": "support@loopwork.com",
     "url": "https://alpine.am"
   },
   "homepage": "https://alpine.am",
+  "repository": "https://github.com/loopwork/alpine-marketplace",
   "extensions": {
     "com.openai": {
+      "onboardingSkill": "./skills/trying-alpine/SKILL.md",
       "interface": {
         "displayName": "Alpine",
         "shortDescription": "Continue your Alpine chat",
@@ -29,6 +32,8 @@
         ]
       },
       "review": {
+        "commerce": false,
+        "commerce_description": "Alpine supports educational insurance and financial-planning exploration. It does not sell products, issue policies, execute trades, or process payments. Any purchase is handled separately by a carrier, broker, or financial institution.",
         "test_cases": {
           "positive": [
             {
@@ -82,7 +87,7 @@
         }
       },
       "publication": {
-        "release_notes": "Consolidated Claude and OpenAI marketplace distribution into one shared plugin tree and removed the duplicate Claude icon path. Production verification and an executed host walkthrough remain required before directory submission."
+        "release_notes": "Included the shared five-positive/three-negative review test plan in both plugin packages, added onboarding and commerce metadata, and documented data handling and submission prerequisites. These are test instructions, not host acceptance evidence; an executed walkthrough remains required before directory submission."
       }
     }
   }
