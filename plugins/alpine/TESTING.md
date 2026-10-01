@@ -1,6 +1,6 @@
 # Alpine review test plan
 
-Version: 0.1.0-dev.9
+Version: 0.1.0-dev.10
 MCP endpoint: https://alpine.am/mcp
 
 These are test instructions, not evidence of successful host runs.

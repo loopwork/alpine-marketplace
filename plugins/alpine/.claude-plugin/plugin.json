@@ -1,7 +1,7 @@
 {
   "name": "alpine",
   "displayName": "Alpine",
-  "version": "0.1.0-dev.9",
+  "version": "0.1.0-dev.10",
   "description": "Explore PPLI and investment-tax questions with Alpine's personalized, saved interview.",
   "author": {
     "name": "Loopwork",

@@ -1,12 +1,12 @@
 {
-  "version": "0.1.0-dev.9",
+  "version": "0.1.0-dev.10",
   "endpoint": "https://alpine.am/mcp",
   "archives": {
     "openai": {
-      "sha256": "45801e10e38c2d2de6e89e8255286483abc67268069d5b94456bd422c6c55cd4"
+      "sha256": "e4e5655856f63b7db3a9c633e8ad6189aaa4ea1d9e4b1e83498a25d6035b0eb7"
     },
     "claude": {
-      "sha256": "3517d3090ef14073cb5696c7a847771767b723a1aa461b984ffa19a27b59135f"
+      "sha256": "3a0ee27148e6e68f544f86d43236dd1e98bdba85f189a2ff9e631bce543f8eed"
     }
   }
 }

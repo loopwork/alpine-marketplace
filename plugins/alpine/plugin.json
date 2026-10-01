@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "alpine",
-  "version": "0.1.0-dev.9",
+  "version": "0.1.0-dev.10",
   "description": "Explore PPLI and investment-tax questions with Alpine's personalized, saved interview.",
   "author": {
     "name": "Loopwork",
@@ -23,7 +23,7 @@
         "supportURL": "https://alpine.am/privacy#support",
         "privacyPolicyURL": "https://alpine.am/privacy",
         "termsOfServiceURL": "https://alpine.am/terms",
-        "composerIcon": "./assets/icon.svg",
+        "composerIcon": "./assets/icon.png",
         "logo": "./assets/logo.png",
         "defaultPrompt": [
           "Show my latest two Alpine messages.",
@@ -87,7 +87,7 @@
         }
       },
       "publication": {
-        "release_notes": "Included the shared five-positive/three-negative review test plan in both plugin packages, added onboarding and commerce metadata, and documented data handling and submission prerequisites. These are test instructions, not host acceptance evidence; an executed walkthrough remains required before directory submission."
+        "release_notes": "Replaced the 32×32 composer icon with the existing 512×512 PNG so OpenAI branding validation accepts the package. This is a packaging fix, not host acceptance evidence."
       }
     }
   }
