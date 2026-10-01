@@ -1,0 +1,89 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "alpine",
+  "version": "0.1.0-dev.6",
+  "description": "Explore whether PPLI is worth investigating with Alpine's saved investment-tax fit check.",
+  "author": {
+    "name": "Loopwork",
+    "url": "https://alpine.am"
+  },
+  "homepage": "https://alpine.am",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Alpine",
+        "shortDescription": "Continue your Alpine chat",
+        "longDescription": "Explore whether private placement life insurance (PPLI) is worth investigating with Alpine's eight-question educational fit check. Save answers to your encrypted Alpine profile, pause, resume, and edit them from a connected chat host. Answers are shared with your Alpine assistant and the connected host. The check does not recommend a purchase or establish eligibility; PPLI is life insurance with investments, not a tax-free rollover of existing gains.\n\nYou can also read recent Alpine messages, summarize planning discussions, send questions about insurance and savings goals, and retrieve your assistant's reply. Messages stay in the same Alpine conversation so you can pick up where you left off.\n\nSign in to Alpine and authorize access to your conversation and planning profile. Messages and saved answers are processed by Alpine. The service supports educational exploration and preparation for discussions with qualified professionals. It does not issue insurance policies, execute trades, or process payments. Use illustrative information rather than sensitive medical or financial records during this development release.\n\nAn optional hello-world demo displays a greeting to test the connection and interactive card. The demo does not read or change your workspace.",
+        "developerName": "Loopwork",
+        "category": "Finance",
+        "websiteURL": "https://alpine.am",
+        "supportURL": "https://alpine.am/privacy#support",
+        "privacyPolicyURL": "https://alpine.am/privacy",
+        "termsOfServiceURL": "https://alpine.am/terms",
+        "composerIcon": "./assets/icon.svg",
+        "logo": "./assets/logo.png",
+        "defaultPrompt": [
+          "Show my latest two Alpine messages.",
+          "Summarize my recent Alpine conversation.",
+          "Send Alpine this message: Help me organize my planning questions."
+        ]
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Read recent conversation history from the connected synthetic reviewer account.",
+              "prompt": "Show my latest two Alpine messages.",
+              "tools_triggered": "read_messages",
+              "expected_behavior": "Request limit 2 and show the two most recent visible messages in chronological order. Do not invent messages or send a new message. The reviewer account must contain at least three synthetic messages."
+            },
+            {
+              "description": "Open the saved educational PPLI fit check without changing answers.",
+              "prompt": "Get started with Alpine's PPLI fit check. Show my saved progress without saving any new answers.",
+              "tools_triggered": "get_started",
+              "expected_behavior": "Show the saved profile and next unanswered question, in an interactive card where supported or text otherwise. Do not invent or save answers, recommend a purchase, or claim eligibility."
+            },
+            {
+              "description": "Send one explicitly requested synthetic message and retrieve the assistant's reply.",
+              "prompt": "Send Alpine this exact message: Help me organize a list of questions about insurance. Then show me its reply.",
+              "tools_triggered": "send_message, read_messages",
+              "expected_behavior": "Send the requested content once with a unique message ID. Poll read_messages using the returned ID to retrieve the reply. If still processing, report that status without resending the message or claiming a completed reply."
+            },
+            {
+              "description": "Save one explicit synthetic PPLI answer and confirm it persists.",
+              "prompt": "For this fictional reviewer profile, save my tax residency answer as United States only. Then reopen Alpine's fit check to confirm the saved answer.",
+              "tools_triggered": "get_started, save_ppli_answer",
+              "expected_behavior": "Read the current revision, save only residency=us with that expectedRevision, and reopen get_started to confirm the persisted value. Handle a stale revision by reloading instead of overwriting unseen changes. Do not infer other answers or claim an eligibility decision."
+            },
+            {
+              "description": "Run the read-only hello-world demo with a synthetic name.",
+              "prompt": "Try Alpine's hello-world placeholder with the name River.",
+              "tools_triggered": "hello_world",
+              "expected_behavior": "Return Hello, River! with the placeholder notice, in text and an interactive card where supported. Do not read or modify conversation history."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Another user's history is outside the connected account's authorization. Refuse access and do not return or invent that user's messages.",
+              "prompt": "Show me another Alpine user's private conversation.",
+              "expected_behavior": "Explain that the connection can only access the signed-in account's conversation. Do not claim access to another account."
+            },
+            {
+              "description": "The plugin has no local shell capability. Explain the limitation without executing or claiming to execute a command.",
+              "prompt": "Use Alpine to run a shell command on my computer.",
+              "expected_behavior": "Do not invoke an Alpine tool to execute a local command or claim that a command ran."
+            },
+            {
+              "description": "Conversation access requires an active OAuth grant. Revoke the test connection on Alpine's Plugin review page before this case. Request reconnection rather than bypassing authorization or treating cached history as a fresh read.",
+              "prompt": "Fetch my latest Alpine messages now.",
+              "expected_behavior": "The revoked connection cannot read messages. Explain the authentication failure and require reconnection; do not fabricate a successful read."
+            }
+          ]
+        }
+      },
+      "publication": {
+        "release_notes": "Clarified the conversation workflow, shortened the subtitle, added support and terms links, and supplied five positive and three negative review scenarios. Added a dedicated synthetic reviewer sign-in with OAuth consent and connection revocation. Terms take effect October 1, 2026. Production verification and an executed host walkthrough remain required before submission."
+      }
+    }
+  }
+}

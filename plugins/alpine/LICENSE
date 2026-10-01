@@ -1,0 +1,33 @@
+Alpine Plugin License
+
+Copyright (c) 2026 Loopwork. All rights reserved.
+
+This license applies only to the Alpine plugin package supplied by Loopwork,
+including its manifests, skill instructions, documentation, and bundled assets
+(the "Plugin"). It does not license the Alpine service, its backend source code,
+or user content. Separately licensed third-party materials remain subject to
+their own licenses.
+
+Loopwork grants you a limited, non-exclusive license to download, install, and
+use the unmodified Plugin solely to access and use Alpine as an authorized user
+or reviewer. You may make copies necessary for that use and allow your selected
+chat host to store and load the Plugin for that purpose. Keep this license and
+copyright notices with those copies.
+
+Except for the permissions above, you may not modify, sublicense, sell, or
+redistribute the Plugin without Loopwork's written permission, unless applicable
+law permits it. No open-source license is granted. All rights not expressly
+granted are reserved.
+
+Alpine and Loopwork names, logos, and other branding remain the property of
+their respective owners. You may display bundled branding as part of the
+unmodified Plugin; this license grants no other trademark rights or right to
+claim endorsement.
+
+Access to and use of the Alpine service are governed separately by the terms
+at https://alpine.am/terms and the privacy policy at https://alpine.am/privacy.
+This license does not grant service access or waive those terms.
+
+To the extent permitted by applicable law, the Plugin is provided "as is",
+without warranties of any kind, express or implied, including warranties of
+merchantability, fitness for a particular purpose, and non-infringement.

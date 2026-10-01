@@ -1,0 +1,14 @@
+{
+  "name": "alpine",
+  "version": "0.1.0-dev.6",
+  "description": "Explore whether PPLI is worth investigating with Alpine's saved investment-tax fit check.",
+  "author": {
+    "name": "Loopwork",
+    "url": "https://alpine.am"
+  },
+  "homepage": "https://alpine.am",
+  "privacyPolicyUrl": "https://alpine.am/privacy",
+  "icon": "./assets/icon.png",
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json"
+}

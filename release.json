@@ -1,0 +1,12 @@
+{
+  "version": "0.1.0-dev.6",
+  "endpoint": "https://alpine.am/mcp",
+  "archives": {
+    "openai": {
+      "sha256": "6ad41d736b40c3a2d35d77a143a5139913384ecc7d9eff0ff7bb21851bfed555"
+    },
+    "claude": {
+      "sha256": "d9e64e201c7b402e2b84deef00fd1e6816b318ee0490f450b0588365786a783e"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "alpine-plugins",
+  "owner": {
+    "name": "Loopwork",
+    "url": "https://alpine.am"
+  },
+  "description": "Alpine plugins for chat.",
+  "plugins": [
+    {
+      "name": "alpine",
+      "description": "Explore whether PPLI is worth investigating with Alpine's saved investment-tax fit check.",
+      "source": "./plugins/alpine"
+    }
+  ]
+}

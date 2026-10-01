@@ -1,0 +1,20 @@
+{
+  "name": "alpine-plugins",
+  "interface": {
+    "displayName": "Alpine"
+  },
+  "plugins": [
+    {
+      "name": "alpine",
+      "source": {
+        "source": "local",
+        "path": "./plugins/alpine"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Finance"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "alpine": {
+      "type": "http",
+      "url": "https://alpine.am/mcp"
+    }
+  }
+}
